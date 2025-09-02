@@ -1,12 +1,11 @@
-from collections.abc import Callable
-from typing import Iterable
+from collections.abc import Callable, Iterable
 
 from dotenv import load_dotenv
 
 from modules.env.var import EnvVar
 
 
-def env[EnvT: type](path: str) -> Callable[[EnvT], type[EnvT]]:
+def env[EnvT: type](path: str) -> Callable[[EnvT], EnvT]:
     if not load_dotenv(path):
         raise FileNotFoundError(f'Unable to load \"{path}\" file')
 

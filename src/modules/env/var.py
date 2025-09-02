@@ -1,7 +1,6 @@
 from os import getenv
 from re import match
-
-from typing_extensions import Self
+from typing import Self
 
 
 class EnvVar(str):
