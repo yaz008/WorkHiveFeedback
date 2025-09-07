@@ -8,7 +8,7 @@ from telebot.types import Message
 @dataclass(slots=True)
 class PendingSet:
     on_error: Callable[[Message], Any]
-    __users: set[int] = field(init=False)
+    __users: set[int] = field(init=False, default_factory=set)
 
     def add(self, user: int) -> None:
         self.__users.add(user)
