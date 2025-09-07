@@ -41,6 +41,12 @@ def on_new(message: Message) -> None:
     bot.send_message(chat_id=message.chat.id, text=load_text('texts/new.txt'))
 
 
+@bot.message_handler(commands=['cancel'])  # type: ignore[misc]
+def on_cancel(message: Message) -> None:
+    pending_set.remove(message.chat.id)
+    bot.send_message(chat_id=message.chat.id, text=load_text('texts/cancel.txt'))
+
+
 @bot.message_handler(content_types=['text', 'photo'])  # type: ignore[misc]
 @pending_set.assert_pending
 def on_report(message: Message) -> None:
